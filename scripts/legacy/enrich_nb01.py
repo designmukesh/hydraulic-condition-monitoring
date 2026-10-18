@@ -1,3 +1,4 @@
+raise SystemExit("Historical generator retired; use scripts/build_notebooks.py and scripts/run_notebooks.py")
 """Enrich notebooks/01_eda.ipynb with: data-quality checks, raw-cycle overlays,
 sensor correlation heatmap. Inserts cells, renumbers sections, saves unexecuted."""
 import nbformat as nbf
@@ -100,3 +101,4 @@ for c in cells:
 
 nbf.write(nb, P)
 print("enriched 01_eda.ipynb:", len(nb.cells), "cells")
+

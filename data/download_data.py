@@ -1,28 +1,36 @@
-"""Download the UCI hydraulic-system condition-monitoring dataset.
-
-Source: Helwig et al., UCI Machine Learning Repository (2018), donated 2018.
-~500 MB total. Run from the repo root:  python data/download_data.py
-"""
-import os
+"""Download UCI dataset 447 (~73.1 MB compressed) and record content hashes."""
+import hashlib
+import json
+from pathlib import Path
 import urllib.request
 import zipfile
 
-URL = "https://archive.ics.uci.edu/static/public/447/condition+monitoring+of+hydraulic+systems.zip"
-DATA_DIR = os.path.dirname(os.path.abspath(__file__))
+URL = 'https://archive.ics.uci.edu/static/public/447/condition+monitoring+of+hydraulic+systems.zip'
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def record_manifest(archive):
+    files = sorted((ROOT / 'data').glob('*.txt'))
+    manifest = {'url': URL, 'doi': '10.24432/C5CW21', 'archive_bytes': archive.stat().st_size,
+                'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
+                'files': {p.name: {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files}}
+    (ROOT / 'reports' / 'data_manifest.json').write_text(json.dumps(manifest, indent=2))
 
 
 def main():
-    os.makedirs(DATA_DIR, exist_ok=True)
-    zip_path = os.path.join(DATA_DIR, "hydraulic.zip")
-    print("Downloading UCI hydraulic-system dataset (~500 MB) ...")
-    urllib.request.urlretrieve(URL, zip_path)
-    print("Extracting ...")
-    with zipfile.ZipFile(zip_path) as z:
-        z.extractall(DATA_DIR)
-    os.remove(zip_path)
-    n = len([f for f in os.listdir(DATA_DIR) if f.endswith(".txt")])
-    print(f"Done. {n} .txt files in {DATA_DIR}")
+    archive = ROOT / 'data' / 'hydraulic.zip'
+    print('Downloading UCI dataset (~73.1 MB compressed)', flush=True)
+    urllib.request.urlretrieve(URL, archive)
+    with zipfile.ZipFile(archive) as z:
+        for member in z.infolist():
+            destination = (archive.parent / member.filename).resolve()
+            if not destination.is_relative_to(archive.parent.resolve()):
+                raise ValueError('Unsafe archive member')
+        z.extractall(archive.parent)
+    record_manifest(archive)
+    archive.unlink()
+    print('Download complete; content hashes recorded in reports/data_manifest.json')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

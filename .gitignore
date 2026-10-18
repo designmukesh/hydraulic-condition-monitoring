@@ -1,4 +1,4 @@
-# raw dataset files are large (~500 MB) — fetch via data/download_data.py
+# Raw text is large; fetch the ~73.1 MiB archive via data/download_data.py.
 data/*.txt
 !data/download_data.py
 
@@ -6,3 +6,8 @@ data/*.txt
 .venv/
 __pycache__/
 .ipynb_checkpoints/
+.runtime/
+.pytest_cache/
+data/*.pkl
+data/*.zip
+*.pyc

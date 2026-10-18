@@ -1,3 +1,4 @@
+raise SystemExit("Historical generator retired; use scripts/build_notebooks.py and scripts/run_notebooks.py")
 """Build notebooks/01_eda.ipynb (unexecuted). Run, then execute with nbconvert."""
 import nbformat as nbf
 
@@ -124,3 +125,4 @@ nb["cells"] = C
 with open("../notebooks/01_eda.ipynb", "w") as f:
     nbf.write(nb, f)
 print("wrote 01_eda.ipynb")
+
