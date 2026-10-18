@@ -1,0 +1,46 @@
+{
+  "leaderboard": {
+    "accumulator": {
+      "hgb": {
+        "accuracy": 0.9864,
+        "macro_f1": 0.9846
+      },
+      "rf": {
+        "accuracy": 0.9796,
+        "macro_f1": 0.9777
+      }
+    },
+    "cooler": {
+      "rf": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      },
+      "hgb": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      }
+    },
+    "pump": {
+      "rf": {
+        "accuracy": 0.9977,
+        "macro_f1": 0.9966
+      },
+      "hgb": {
+        "accuracy": 0.9955,
+        "macro_f1": 0.9932
+      }
+    },
+    "valve": {
+      "rf": {
+        "accuracy": 0.9864,
+        "macro_f1": 0.9828
+      },
+      "hgb": {
+        "accuracy": 0.9841,
+        "macro_f1": 0.9794
+      }
+    }
+  },
+  "n_cycles": 2205,
+  "n_features": 187
+}
