@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "tests": ".....                                                                    [100%]\n5 passed in 1.46s",
+  "notebooks": {
+    "01_eda.ipynb": {
+      "executed_code_cells": 3,
+      "sha256": "f7420261a85416cefe1f7b8977220be73553bfcf50e6aadab6979b8147e9c752"
+    },
+    "02_modeling.ipynb": {
+      "executed_code_cells": 3,
+      "sha256": "95f8f8093caba77acd211135b5b93374aa26e21ab91dac40cb08072a3c8cc107"
+    }
+  },
+  "checks": [
+    "raw data hashes",
+    "test partition separation and reproducibility",
+    "saved predictions versus raw labels",
+    "recomputed test and subgroup metrics",
+    "training-CV winner and fold counts",
+    "paired ablation drops",
+    "executed notebooks without errors",
+    "six nonempty figures"
+  ],
+  "metrics_sha256": "381947f3148dab11b5c74053ce096cd507beb53a9ac5b2e6533df31345adc248"
+}

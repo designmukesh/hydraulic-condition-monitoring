@@ -9,3 +9,4 @@ nbclient>=0.10,<1
 ipykernel>=6.29,<8
 pytest>=8,<10
 threadpoolctl>=3.5,<4
+markdown>=3.7,<4
