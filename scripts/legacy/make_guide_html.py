@@ -1,3 +1,4 @@
+raise SystemExit("Historical generator retired; use scripts/build_notebooks.py and scripts/run_notebooks.py")
 """Build PROJECT_GUIDE.html — self-contained, all figures embedded as base64."""
 import os, base64
 
@@ -290,3 +291,4 @@ out = os.path.join(ROOT, "PROJECT_GUIDE.html")
 with open(out, "w") as f:
     f.write(html)
 print("wrote", out, f"({os.path.getsize(out)/1024:.0f} KB)")
+

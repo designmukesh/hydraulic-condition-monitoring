@@ -1,3 +1,4 @@
+raise SystemExit("Historical generator retired; use scripts/build_notebooks.py and scripts/run_notebooks.py")
 """Generate pedagogical diagrams for the HTML project guide."""
 import os
 import numpy as np
@@ -144,3 +145,4 @@ if __name__ == "__main__":
     d2_annotated_signal()
     d3_decision_flow()
     print("diagrams done:", sorted(f for f in os.listdir(FIG) if f.startswith(("05", "06", "07"))))
+

@@ -1,3 +1,4 @@
+raise SystemExit("Historical generator retired; use scripts/build_notebooks.py and scripts/run_notebooks.py")
 """Enrich notebooks/02_modeling.ipynb with: per-class report cards, a prediction
 walkthrough on real held-out cycles, top-12 individual features. Renumbers
 sections. Saves unexecuted."""
@@ -112,3 +113,4 @@ for c in cells:
 
 nbf.write(nb, P)
 print("enriched 02_modeling.ipynb:", len(nb.cells), "cells")
+
